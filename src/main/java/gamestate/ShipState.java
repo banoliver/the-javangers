@@ -1,9 +1,9 @@
-package gamedescription;
+package gamestate;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Spaceship {
+public class ShipState {
 
     private int shipID;
 
@@ -18,7 +18,7 @@ public class Spaceship {
     private String owner;
 
     @JsonCreator
-    public Spaceship(@JsonProperty int shipID,
+    public ShipState(@JsonProperty int shipID,
                      @JsonProperty double shipX,
                      @JsonProperty double shipY,
                      @JsonProperty boolean shieldIsActivated,
@@ -34,7 +34,7 @@ public class Spaceship {
 
     @Override
     public String toString() {
-        return "Spaceship{" +
+        return "ShipState{" +
                 "shipID=" + shipID +
                 ", shipX=" + shipX +
                 ", shipY=" + shipY +

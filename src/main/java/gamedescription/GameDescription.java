@@ -7,6 +7,12 @@ import java.util.Arrays;
 
 public class GameDescription {
 
+    private Meteorite[] meteorites;
+
+    private Player[] players;
+
+    private Spaceship[] spaceships;
+
     private int gameLength;
 
     private int mapSizeY;
@@ -43,14 +49,11 @@ public class GameDescription {
 
     private double movementSpeedMultiplier;
 
-    private Meteorite[] meteorites;
-
-    private Player[] players;
-
-    private Spaceship[] spaceships;
-
     @JsonCreator
-    public GameDescription(@JsonProperty int gameLength,
+    public GameDescription(@JsonProperty Meteorite[] meteorites,
+                           @JsonProperty Player[] players,
+                           @JsonProperty Spaceship[] spaceships,
+                           @JsonProperty int gameLength,
                            @JsonProperty int mapSizeY,
                            @JsonProperty int mapSizeX,
                            @JsonProperty int commandSchedule,
@@ -67,10 +70,10 @@ public class GameDescription {
                            @JsonProperty int shieldUsingSchedule,
                            @JsonProperty int shieldRenewingSchedule,
                            @JsonProperty int upgradeScore,
-                           @JsonProperty double movementSpeedMultiplier,
-                           @JsonProperty Meteorite[] meteorites,
-                           @JsonProperty Player[] players,
-                           @JsonProperty Spaceship[] spaceships) {
+                           @JsonProperty double movementSpeedMultiplier) {
+        this.meteorites = meteorites;
+        this.players = players;
+        this.spaceships = spaceships;
         this.gameLength = gameLength;
         this.mapSizeY = mapSizeY;
         this.mapSizeX = mapSizeX;
@@ -89,15 +92,15 @@ public class GameDescription {
         this.shieldRenewingSchedule = shieldRenewingSchedule;
         this.upgradeScore = upgradeScore;
         this.movementSpeedMultiplier = movementSpeedMultiplier;
-        this.meteorites = meteorites;
-        this.players = players;
-        this.spaceships = spaceships;
     }
 
     @Override
     public String toString() {
         return "GameDescription{" +
-                "gameLength=" + gameLength +
+                "meteorites=" + Arrays.toString(meteorites) +
+                ", players=" + Arrays.toString(players) +
+                ", spaceships=" + Arrays.toString(spaceships) +
+                ", gameLength=" + gameLength +
                 ", mapSizeY=" + mapSizeY +
                 ", mapSizeX=" + mapSizeX +
                 ", commandSchedule=" + commandSchedule +
@@ -115,9 +118,6 @@ public class GameDescription {
                 ", shieldRenewingSchedule=" + shieldRenewingSchedule +
                 ", upgradeScore=" + upgradeScore +
                 ", movementSpeedMultiplier=" + movementSpeedMultiplier +
-                ", meteorites=" + Arrays.toString(meteorites) +
-                ", players=" + Arrays.toString(players) +
-                ", spaceships=" + Arrays.toString(spaceships) +
                 '}';
     }
 }
